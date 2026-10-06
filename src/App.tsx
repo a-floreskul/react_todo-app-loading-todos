@@ -33,6 +33,16 @@ export const App: React.FC = () => {
       .catch(() => setErrorMessage('Unable to load todos'));
   }, []);
 
+  useEffect(() => {
+    if (!errorMessage) {
+      return;
+    }
+
+    const timerId = setTimeout(() => setErrorMessage(''), 3000);
+
+    return () => clearTimeout(timerId);
+  }, [errorMessage]);
+
   const visibleTodos = getFilteredTodos(todos, filter);
   const activeCount = todos.filter(todo => !todo.completed).length;
   const hasCompleted = todos.some(todo => todo.completed);
