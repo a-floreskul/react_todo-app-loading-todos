@@ -4,11 +4,11 @@ import { Todo } from '../types/Todo';
 
 type Props = {
   todo: Todo;
-  isLoading?: boolean; // стан "loading"
+  isLoading?: boolean;
 };
 
 export const TodoItem: React.FC<Props> = ({ todo, isLoading = false }) => {
-  const [isEditing, setIsEditing] = useState(false); // "editing"
+  const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(todo.title);
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
